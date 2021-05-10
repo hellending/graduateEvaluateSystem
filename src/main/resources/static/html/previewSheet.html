@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>previewSheet</title>
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+</head>
+<body>
+    <div style="width: 1300px;">
+        <table class="layui-hide" id="demo" lay-filter="test"></table>
+    </div>
+</body>
+
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<script th:inline="none">
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+
+
+    //加载模块（从layui 2.6 开始，第一个参数不传即代表加载所有内置模块）
+    layui.use(function(){ //加载特定模块：layui.use(['layer', 'laydate', function(){
+        //得到各种内置组件
+        var layer = layui.layer //弹层
+            ,table = layui.table //表格
+            ,element = layui.element //元素操作
+            ,dropdown = layui.dropdown //下拉菜单
+
+        //监听Tab切换
+        element.on('tab(demo)', function(data){
+            layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
+                tips: 1
+            });
+        });
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#demo'
+            ,height: 420
+            ,url: '/previewExcel' //数据接口
+            ,title: '用户表'
+            ,page: true //开启分页
+            ,toolbar: 'none' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'index', title: '#', width:40,align: "center"}
+                ,{field: 'stu_num', title: '学号', width: 140, sort: true, totalRow: true,align: "center"}
+                ,{field: 'name', title: '姓名', width:160, sort: true,align: "center"}
+                ,{field: 'in1', title: '期末试题：试题一、二、三、四', width:250, sort: true,align: "center"}
+                ,{field: 'in2', title: '作业', width:140, sort: true,align: "center"}
+                ,{field: 'in3', title: '期末试题：试题五', width:190, sort: true,align: "center"}
+                ,{field: 'in4', title: '课程实习1', width:170, sort: true,align: "center"}
+                ,{field: 'in5', title: '课程实习2', width:170, sort: true,align: "center"}
+            ]]
+        });
+    });
+</script>
+</html>

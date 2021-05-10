@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>毕业达成度查询管理系统-管理员</title>
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/boot-strap-min.css">
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">毕业达成度查询管理系统</div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+                    Admin
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="/load">Sign out</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed layui-this">
+                    <a id="info_check" class="" href="javascript:;">管理培养目标</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a id="grade-select" class="" href="javascript:;">管理课程大纲</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a id="toSelect" class="" href="javascript:;">达成度查询</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a id="else" class="" href="javascript:;">其他</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+         <div id="1" style="width: 600px;">
+             <div style="position: absolute;left: 20px;top: 20px;">
+                 <label>
+                     <strong>请选择表:</strong>
+                 </label>
+                 <select class="custom-select" id="select1" style="width: 200px;">
+                     <option value="指标点-课程表" selected>指标点-课程表</option>
+                     <option value="指标点表">指标点表</option>
+                     <option value="毕业要求表">毕业要求表</option>
+                 </select>
+             </div>
+             <form action="" target="iframe1" id="form1" enctype="multipart/form-data" method="post">
+                 <div style="position: absolute;left: 20px;top: 80px;">
+                     <label>
+                         <strong>
+                             导入表格(*.xls):
+                         </strong>
+                     </label>
+                     <input type="file" name="file" id="file" accept=".xls" required>
+                     <input type="submit" id="preview1" class="layui-btn layui-btn-xs" style="width:60px;height: 30px;" value="预览">
+                     <input type="submit" class="layui-btn layui-btn-xs" id="insertExcel1" style="width:60px;height: 30px;">
+                     <button class="layui-btn layui-btn-xs" id="model2" style="height: 30px;">下载excel模板</button>
+                 </div>
+             </form>
+             <iframe name="iframe1-1" id="iframe1-1" hidden></iframe>
+             <iframe name="iframe1-2" id="iframe1-2" hidden></iframe>
+             <iframe name="iframe1-3" id="iframe1-3" hidden></iframe>
+             <iframe name="iframe1-4" id="iframe1-4" hidden></iframe>
+             <iframe name="iframe1-5" id="iframe1-5" hidden></iframe>
+             <iframe name="iframe1-6" id="iframe1-6" hidden></iframe>
+             <div style="position: absolute;top: 130px;width: 800px;">
+                  <table class="layui-hide" id="demo" lay-filter="test"></table>
+             </div>
+         </div>
+         <div id="2" style="display: none">
+             <div style="position: absolute;left: 20px;top: 20px;">
+                 <label>
+                     <strong>请选择表:</strong>
+                 </label>
+                 <select class="custom-select" id="select2" style="width: 200px;">
+                     <option selected>课程大纲</option>
+                 </select>
+             </div>
+             <form>
+                 <div style="position: absolute;left: 20px;top: 80px;">
+                     <label>
+                         <strong>
+                             导入表格(*.xls):
+                         </strong>
+                     </label>
+                     <input type="file" name="file" id="file1" accept=".xls" required>
+                     <input type="submit" id="preview2" class="layui-btn layui-btn-xs" style="width:60px;height: 30px;" value="预览">
+                     <input type="submit" class="layui-btn layui-btn-xs" id="insertExcel2" style="width:60px;height: 30px;">
+                     <button class="layui-btn layui-btn-xs" id="model3" style="height: 30px;">下载excel模板</button>
+                 </div>
+             </form>
+             <div style="position: absolute;top: 130px;width: 800px;">
+                 <table class="layui-hide" id="demo1" lay-filter="test"></table>
+             </div>
+         </div>
+        <div id="3" style="display: none">
+            <div style="position: absolute;left: 20px;top: 20px;">
+                <label>
+                    <strong>请选择表:</strong>
+                </label>
+                <select class="custom-select" id="select3" style="width: 200px;">
+                    <option selected>学生表</option>
+                    <option>教师表</option>
+                    <option>课程表</option>
+                    <option>教师-课程表</option>
+                    <option>教师-课程-学生表</option>
+                </select>
+            </div>
+            <form>
+                <div style="position: absolute;left: 20px;top: 80px;">
+                    <label>
+                        <strong>
+                            导入表格(*.xls):
+                        </strong>
+                    </label>
+                    <input type="file" name="file" id="file2" accept=".xls" required>
+                    <input type="submit" id="preview3" class="layui-btn layui-btn-xs" style="width:60px;height: 30px;" value="预览">
+                    <input type="submit" class="layui-btn layui-btn-xs" id="insertExcel3" style="width:60px;height: 30px;">
+                    <button class="layui-btn layui-btn-xs" id="model4" style="height: 30px;">下载excel模板</button>
+                </div>
+            </form>
+            <div style="position: absolute;top: 130px;width: 800px;">
+                <table class="layui-hide" id="demo2" lay-filter="test"></table>
+            </div>
+        </div>
+        <div id="select" style="display: none;position:absolute;left: 100px;top: 70px;">
+            <div>
+                <form id="form11" action="/readExcel" target="iframe3" enctype="multipart/form-data" method="post">
+                    <label>
+                        <strong>
+                            批量查询学生(*.xls):
+                        </strong>
+                    </label>
+                    <input type="file" name="file" id="file11" accept=".xls" required>
+                    <input type="submit" class="layui-btn layui-btn-xs" style="width: 60px;height:30px;" id="select_stu_score1" value="查找">
+                </form>
+            </div>
+            <iframe name="iframe3" id="iframe3" hidden></iframe>
+            <div style="margin-top: 20px;">
+                <label>
+                    <strong>
+                        单独查询:
+                    </strong>
+                </label>
+                <form action="/singleSelect" target="iframe4">
+                    <input type="text" class="form-control" name="stu_num" style="width: 360px;display: inline-block;" placeholder="--查询的学生学号--">
+                    <input type="submit" class="layui-btn layui-btn-xs" style="width: 60px;height:30px;margin-left: 10px;" id="select_stu_score2" value="查找">
+                </form>
+                <iframe name="iframe4" id="iframe4" hidden></iframe>
+            </div>
+            <div style="width:800px;" id="stu_tea">
+                <table class="layui-hide" id="demo11" lay-filter="test"></table>
+                <script type="text/html" id="barDemo">
+                    <a class="layui-btn layui-btn-xs" lay-event="detail">更多</a>
+                </script>
+            </div>
+            <div id="grade" style="display: none;width: 800px;">
+                <button class="layui-btn layui-btn-xs" id="re0" style="width: 70px;height: 30px;position: absolute;top: 490px;left: 450px;z-index: 10000;">
+                    return
+                </button>
+                <table class="layui-hide" id="demo12" lay-filter="test"></table>
+                <script type="text/html" id="barDemo0">
+                    <a class="layui-btn layui-btn-xs" lay-event="detail">更多</a>
+                </script>
+            </div>
+            <div id="grade1" style="display: none;width: 800px;">
+                <button class="layui-btn layui-btn-xs" id="re1" style="width: 70px;height: 30px;position: absolute;top: 490px;left: 450px;z-index: 10000;">
+                    return
+                </button>
+                <table class="layui-hide" id="demo13" lay-filter="test"></table>
+                <script type="text/html" id="barDemo1">
+                    <a class="layui-btn layui-btn-xs" lay-event="detail">更多</a>
+                </script>
+            </div>
+            <div id="grade2" style="display: none;width: 800px;">
+                <button class="layui-btn layui-btn-xs" id="re2" style="width: 70px;height: 30px;position: absolute;top: 490px;left: 450px;z-index: 10000;">
+                    return
+                </button>
+                <table class="layui-hide" id="demo14" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <strong><em>Graduation achievement evaluation system</em></strong>
+    </div>
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<script src="/js/adminHome.js"></script>
+<script th:inline="none">
+    layui.config({
+        version: '{{lay.version}}' //为了更新 js 缓存，可忽略
+    });
+
+    //加载模块（从layui 2.6 开始，第一个参数不传即代表加载所有内置模块）
+    layui.use(function(){ //加载特定模块：layui.use(['layer', 'laydate', function(){
+        //得到各种内置组件
+        var layer = layui.layer //弹层
+            ,table = layui.table //表格
+            ,element = layui.element //元素操作
+            ,dropdown = layui.dropdown //下拉菜单
+
+        //监听Tab切换
+        element.on('tab(demo)', function(data){
+            layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
+                tips: 1
+            });
+        });
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#demo'
+            ,height: 420
+            ,url: '/demo' //数据接口
+            ,title: '用户表'
+            ,page: true //开启分页
+            ,toolbar: 'none' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'index', title: '#', width:40,align: "center"}
+                ,{field: 'course_num', title: '课程编号', width: 140, sort: true, totalRow: true,align: "center"}
+                ,{field: 'index_num', title: '指标点编号', width:160, sort: true,align: "center"}
+                // ,{fixed: 'weight', title: '权重', width: 80, align:'center', toolbar: '#barDemo'}
+                ,{field: 'weight', title: '权重', width:80, sort: true,align: "center"}
+            ]]
+        });
+        table.render({
+            elem: '#demo1'
+            ,height: 420
+            ,url: '/demo' //数据接口
+            ,title: '用户表'
+            ,page: true //开启分页
+            ,toolbar: 'none' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'index', title: '#', width:40,align: "center"}
+                ,{field: 'course_objective', title: '课程教学目标', width: 140, sort: true, totalRow: true,align: "center"}
+                ,{field: 'index_point', title: '毕业要求指标点', width:160, sort: true,align: "center"}
+                ,{field: 'evaluation_basis', title: '评价依据', width:160, sort: true,align: "center"}
+                ,{field: 'score', title: '分值', width:80, sort: true,align: "center"}
+            ]]
+        });
+        table.render({
+            elem: '#demo11'
+            ,height: 420
+            ,url: '/readExcelResponse' //数据接口
+            ,title: '用户表'
+            ,page: true //开启分页
+            ,toolbar: 'none' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'index', title: '#', width:40}
+                ,{field: 'stu_num', title: '学号', width: 140, sort: true, totalRow: true}
+                ,{field: 'name', title: '姓名', width:80, sort: true}
+                ,{field: 'eva_value', title: '毕业要求总达成度', width:160, sort: true}
+                ,{fixed: 'right', title: '操作', width: 80, align:'center', toolbar: '#barDemo'}
+            ]]
+        });
+        table.render({
+            elem: '#demo2'
+            ,height: 420
+            ,url: '/demo' //数据接口
+            ,title: '用户表'
+            ,page: true //开启分页
+            ,toolbar: 'none' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'index', title: '#', width:40,align: "center"}
+                ,{field: 'stu_num', title: '学号', width: 140, sort: true, totalRow: true,align: "center"}
+                ,{field: 'name', title: '姓名', width:100, sort: true,align: "center"}
+                ,{field: 'sex', title: '性别', width:80, sort: true,align: "center"}
+                ,{field: 'age', title: '年龄', width:80, sort: true,align: "center"}
+                ,{field: 'department', title: '院系', width:160, sort: true,align: "center"}
+            ]]
+        });
+    });
+</script>
+</body>
+</html>

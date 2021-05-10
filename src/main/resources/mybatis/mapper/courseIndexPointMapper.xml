@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.Service.Mapper.courseIndexPointMapper">
+    <select id="selectIndexPointNumByContent" resultType="java.lang.String">
+            select num from index_point where content=#{content}
+    </select>
+    <select id="selectCourseIndexPoint" resultType="courseIndexPoint">
+            select course.name,course_index.weight,eva_value from course,course_index,student_course_index
+                                           where course.num=course_index.course_num
+                                           and course_index.index_num=student_course_index.index_num
+                                           and course_index.course_num=student_course_index.course_num
+                                           and student_course_index.stu_num=#{stu_num}
+                                           and student_course_index.index_num=#{num}
+    </select>
+</mapper>

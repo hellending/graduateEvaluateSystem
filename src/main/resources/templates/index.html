@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/boot-strap-min.css">
+    <link rel="stylesheet" type="text/css" href="/css/Load.css">
+</head>
+<body>
+<form action="/" method="post" class="form-login" id="form">
+    <div id="img_container">
+        <img class="img" src="/img/login.jpg" alt="Login" align="center">
+    </div>
+    <h1 class="h3 mb-3 font-weight-normal" align="center">Please sign in</h1>
+    <div align="center">
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:200px">
+                登录身份
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a id="student" class="dropdown-item" href="#" selected>学生</a>
+                <a id="teacher" class="dropdown-item" href="#">教师</a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div align="center">
+        <input class="form-control" name="userName" type="text" placeholder="学号/工号" title="用户名" required>
+    </div>
+    <div align="center">
+        <input class="form-control" name="password"  placeholder="密码" type="password" title="登录密码" required>
+    </div>
+    <div id="msg" align="center" style="color: red">[[${msg}]]</div>
+    <br/>
+    <div align="center">
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="登录" id="login">
+        <input class="btn btn-lg btn-primary btn-block" type="button" value="注册" id="toRegister">
+        <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+    </div>
+</form>
+</body>
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/Load.js"></script>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.Service.Mapper.studentIndexPointMapper">
+    <select id="selectStudentIndexPoint" resultType="studentIndexPoint">
+        select content,eva_value from  student_index,index_point where student_index.index_num=index_point.num
+                                                                   and student_index.stu_num=#{stu_num}
+                                                                   and index_point.num like concat(#{num},'-','%')
+    </select>
+    <select id="selectGraduateRequirementsNum" resultType="java.lang.String">
+        select num from graduate_requirements where content=#{content}
+    </select>
+</mapper>

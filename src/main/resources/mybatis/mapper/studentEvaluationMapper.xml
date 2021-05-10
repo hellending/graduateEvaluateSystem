@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.Service.Mapper.studentEvaluationMapper">
+      <insert id="insertExcel1">
+              update student_course_index set eva_value=0.74 where course_num='192105';
+      </insert>
+    <insert id="insertExcel2">
+        update student_index set eva_value=0.67 where index_num='2-2';
+    </insert>
+    <insert id="insertExcel3">
+        update student_graduate set eva_value=0.67 where gra_num='2';
+    </insert>
+</mapper>

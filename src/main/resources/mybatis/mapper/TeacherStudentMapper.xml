@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Service.Mapper.TeacherStudentMapper">
+       <select id="getTeacherStudent" resultType="teacherStudent">
+           select student_graduate.stu_num,student.name,min(student_graduate.eva_value) as eva_value from student,student_graduate
+                                                            where student.stu_num=student_graduate.stu_num
+                                                            and student_graduate.stu_num=#{stu_num}
+       </select>
+</mapper>
